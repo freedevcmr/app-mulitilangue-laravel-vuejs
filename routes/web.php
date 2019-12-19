@@ -11,11 +11,18 @@
 |
 */
 
-app()->setlocale('en');
+// app()->setlocale('en');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::view('/','pages.home');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+                'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+        ], function()
+{
+    Route::view('/','pages.home');
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
+});
