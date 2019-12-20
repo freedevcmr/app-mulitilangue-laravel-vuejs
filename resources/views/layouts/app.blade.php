@@ -25,16 +25,20 @@
         @include('layouts.partials._nav')
 
         <main class="py-4">
+          
+            
             @yield('content')
            
         </main>
 
         <div class="container">
-            <p>{{ __("messages.cookie_consentement") }}
-               
-                <a href="#">{{ __("messages.learn_more") }}</a> <button type="button">Ok</button>
-            </p>
+            <cookie-banner-consentment></cookie-banner-consentment>
         </div>
+
+        {{-- <p>{{ __("messages.cookie_consentement") }}
+               
+            <a href="#">{{ __("messages.learn_more") }}</a> <button type="button">Ok</button>
+        </p> --}}
     </div>
 </body>
 </html>
